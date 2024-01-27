@@ -1,1 +1,1 @@
-# bladeball.netlify.app
+# https://bladeball.netlify.app
