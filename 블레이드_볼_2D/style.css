@@ -1,0 +1,27 @@
+#redP {
+    width: 100px; height: 100px;
+    position: relative;
+    left: 40%;
+    background-color: red;
+}
+
+#ball {
+    width: 50px; height: 50px;
+    position: relative;
+    left: 42%; top: 80px;
+    background-color: gray;
+
+    transition: all 3s;
+}
+
+#blueP {
+    width: 100px; height: 100px;
+    position: relative;
+    left: 40%; top: 400px;
+    background-color: blue;
+}
+
+hr {
+    position: relative;
+    top: 200px;
+}
