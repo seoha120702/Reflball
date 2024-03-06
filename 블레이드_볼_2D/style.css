@@ -1,27 +1,58 @@
-#redP {
-    width: 100px; height: 100px;
-    position: relative;
-    left: 40%;
-    background-color: red;
+html {
+    background-color: rgb(255, 255, 203);
 }
 
+/* 플레이어 */
+#red_player {
+    width: 100px; height: 100px;
+    position: absolute;
+    background-color: red;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    display: inline;
+}
+
+#blue_player {
+    width: 100px; height: 100px;
+    position: absolute;
+    background-color: blue;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    display: inline;
+}
+
+/* 공 */
 #ball {
     width: 50px; height: 50px;
-    position: relative;
-    left: 42%; top: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-color: gray;
-
-    transition: all 3s;
+    border-radius: 50%;
 }
 
-#blueP {
+/* 베리어 들 */
+#blue_barrier {
+    padding: 10px;
+    border: 3px solid black;
     width: 100px; height: 100px;
-    position: relative;
-    left: 40%; top: 400px;
-    background-color: blue;
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
 
-hr {
-    position: relative;
-    top: 200px;
+#red_barrier {
+    padding: 10px;
+    border: 3px solid black;
+    width: 100px; height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
