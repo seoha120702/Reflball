@@ -1,1 +1,1 @@
-[At Netlify](https://bladeball2d.netlify.app)
+[At Netlify](https://bladeball2d-seoha.netlify.app)
