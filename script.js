@@ -7,10 +7,11 @@ const redBarrier = $("#red_barrier");
 const blueColldownChecker = $("#blueCC");
 const redColldownChecker = $("#redCC");
 const counter = $('#counter');
-const result = $("h1")
+const result = $("h1");
+const restart = $('#restart');
 let intervalID = true;
 var btop = 20;
-var num = 0.75;
+var num = 0.25;
 var isballClicked = false;
 var isblueCooldown = false;
 var isredCooldown = false;
@@ -25,6 +26,11 @@ const duration = 1500;
 
 blueBarrier.css("display", "none");
 redBarrier.css("display", "none");
+restart.css("display", "none");
+
+function gameover() {
+    restart.css("display", "inline");
+};
 
 // setInterver 정의
 function animate() {
@@ -65,6 +71,7 @@ function ball_animate() {
             // 레드 승
             result.html("레드 승!");
             clearInterval(intervalID);
+            gameover();
         }
         // 쳐냈다면
         else {
@@ -78,6 +85,7 @@ function ball_animate() {
             // 블루 승
             result.html("블루 승!");
             clearInterval(intervalID);
+            gameover();
         }
         // 쳐냈다면
         else {
@@ -127,3 +135,14 @@ red_player.on('click', () => {
             redColldownChecker.html("");
         }, colldown + duration);
 }});
+
+restart.on('click', () => {
+    location.reload();
+});
+
+//도움말
+const help = $("#help");
+
+help.on('click', () => {
+    location.href = "help.html";
+});
