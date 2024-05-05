@@ -21,7 +21,7 @@ var redEndDurationTimeoutID;
 var blueEndCooldownTimeoutID;
 var redEndCooldownTimeoutID;
 
-const colldown = 3000;
+const colldown = 2000;
 const duration = 1500;
 
 blueBarrier.css("display", "none");
@@ -65,7 +65,7 @@ function ball_animate() {
     btop += num;
     ball.css("top", `${btop}%`);
     // 블루 플레이어에게 닿았다면
-    if (btop > 82.5) {
+    if (btop > 90) {
         // 쳐내지 못했다면
         if (blueBarrier.css("display") === "none") {
             // 레드 승
@@ -79,7 +79,7 @@ function ball_animate() {
         };
     };
     // 레드 플레이어에게 닿았다면
-    if (btop < 17.5) {
+    if (btop < 10) {
         // 쳐내지 못했다면
         if (redBarrier.css("display") === "none") {
             // 블루 승
@@ -135,44 +135,6 @@ red_player.on('click', () => {
             redColldownChecker.html("");
         }, colldown + duration);
 }});
-
-window.addEventListener("keydown", (e) => {
-    console.log(e)
-    if (e.code === "KeyA") {
-        if (!isblueCooldown) {
-            blueBarrier.css("display", "block");
-            isblueCooldown = true;
-    
-            blueEndDurationTimeoutID = setTimeout(() => {
-                blueBarrier.css("display", "none")
-                isblueCooldown = true;
-                blueColldownChecker.html("블루 쿨타임");
-            }, duration);
-            
-            blueEndCooldownTimeoutID = setTimeout(() => {
-                isblueCooldown = false;
-                blueColldownChecker.html("");
-            }, colldown + duration);
-        };
-    };
-    if (e.code === "KeyL") {
-        if (!isredCooldown) {
-            redBarrier.css("display", "block");
-                isredCooldown = true;
-        
-                redEndDurationTimeoutID = setTimeout(() => {
-                    redBarrier.css("display", "none");
-                    isredCooldown = true;
-                    redColldownChecker.html("레드 쿨타임")
-                }, duration);
-                
-                redEndCooldownTimeoutID = setTimeout(() => {
-                    isredCooldown = false;
-                    redColldownChecker.html("");
-                }, colldown + duration);
-        };
-    }
-});
 
 restart.on('click', () => {
     location.reload();
