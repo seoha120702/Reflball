@@ -20,9 +20,22 @@ var blueEndDurationTimeoutID;
 var redEndDurationTimeoutID;
 var blueEndCooldownTimeoutID;
 var redEndCooldownTimeoutID;
+var nextPlayer = "blue";
 
-const colldown = 2000;
+const colldown = 1000;
 const duration = 1500;
+
+function checkVerticalCollision(element1, element2) {
+    const rect1 = element1[0].getBoundingClientRect();
+    const rect2 = element2[0].getBoundingClientRect();
+
+    // Check for vertical collision
+    if (rect1.bottom > rect2.top && rect1.top < rect2.bottom) {
+        return true; // Vertical collision detected
+    } else {
+        return false; // No vertical collision
+    }
+}
 
 blueBarrier.css("display", "none");
 redBarrier.css("display", "none");
@@ -46,6 +59,7 @@ function attack(player) {
         ball.css("background", "red");
         blueColldownChecker.html("");
         isblueCooldown = false;
+        nextPlayer = "red";
         clearTimeout(blueEndDurationTimeoutID);
         clearTimeout(blueEndCooldownTimeoutID);
     }
@@ -54,6 +68,7 @@ function attack(player) {
         ball.css("background", "blue");
         redColldownChecker.html("");
         isredCooldown = false;
+        nextPlayer = "blue"
         clearTimeout(redEndDurationTimeoutID);
         clearTimeout(redEndCooldownTimeoutID);
     };
@@ -65,7 +80,7 @@ function ball_animate() {
     btop += num;
     ball.css("top", `${btop}%`);
     // 블루 플레이어에게 닿았다면
-    if (btop > 90) {
+    if (checkVerticalCollision(ball, blue_player) && nextPlayer === "blue") {
         // 쳐내지 못했다면
         if (blueBarrier.css("display") === "none") {
             // 레드 승
@@ -79,7 +94,7 @@ function ball_animate() {
         };
     };
     // 레드 플레이어에게 닿았다면
-    if (btop < 10) {
+    if (checkVerticalCollision(ball, red_player) && nextPlayer === "red") {
         // 쳐내지 못했다면
         if (redBarrier.css("display") === "none") {
             // 블루 승
